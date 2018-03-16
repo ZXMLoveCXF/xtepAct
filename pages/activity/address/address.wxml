@@ -1,0 +1,29 @@
+<!--pages/activity/address/address.wxml-->
+<view class="container" style="display:{{isLoadding?'none':'block'}}">
+  <view class="warn"  wx:if="{{showModalStatus}}">
+    <text>* 提示：提交收货信息后不可修改，请核对后提交。</text>
+  </view>
+  <form report-submit="true" bindsubmit="formSubmit">
+    <view class="box dis">
+      <view class="int sml">
+        <text>联系人：</text>
+        <input name="contact" disabled="{{isDisabled}}" data-statu="open" placeholder-class="phcolor" placeholder='请输入联系人' maxlength='10' value="{{formData.contact}}" />
+      </view>
+      <view class="int sml">
+        <text>手机号：</text>
+        <input name="phone" type="number" disabled="{{isDisabled}}" placeholder-class="phcolor" placeholder='请输入手机号' maxlength='11' value="{{formData.phone}}" />
+      </view>
+      <view class="text">
+        <text decode="{{true}}">地&nbsp;&nbsp;&nbsp;址：</text>
+        <textarea name="address" disabled="{{isDisabled}}" placeholder-class="phcolor" placeholder='请输入地址' maxlength='255' value="{{formData.address}}" />
+      </view>
+    </view>
+    <view class="box">
+      <view class="text">
+        <text decode="{{true}}">备&nbsp;&nbsp;&nbsp;注：</text>
+        <textarea name="mark" disabled="{{isDisabled}}" placeholder-class="phcolor" placeholder="{{defaultMark}}" maxlength='255' value="{{formData.mark}}" />
+      </view>
+    </view>
+    <button formType="submit" style="display:{{isDisabled?'none':'block'}}" class="btn">提交</button>
+  </form>
+</view>

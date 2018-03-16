@@ -1,0 +1,80 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.6.6",
+	"appid": "wx7729c44fc6e954ec",
+	"projectname": "xtepAct",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "投票",
+					"pathName": "pages/vote/vote",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "个人信息",
+					"pathName": "pages/vote/userinfo/userinfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "报名",
+					"pathName": "pages/vote/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "排行榜",
+					"pathName": "pages/vote/rank/rank",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/vote/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "报名活动1",
+					"pathName": "pages/activity/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "报名活动2",
+					"pathName": "pages/activity/join_1/join_1",
+					"query": ""
+				}
+			]
+		}
+	}
+}

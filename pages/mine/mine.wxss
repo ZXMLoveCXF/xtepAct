@@ -1,0 +1,18 @@
+/* pages/mine/mine.wxss */
+.head{text-align:center;margin-top:20rpx;}
+.head image{width:180rpx;height:180rpx;margin:15rpx 0;border-radius:200rpx;border:1px solid #f1f1f1;}
+.head .name text{font-size:38rpx;color:#010101;font-weight:600;}
+.head .num-box{display:flex;justify-content:space-around;margin:50rpx 0;}
+.head .num-box .left view:first-child{color:#010101;font-size:38rpx;}
+.head .num-box .left view:last-child{color:#8f8f8f;font-size:25rpx;}
+.head .num-box .right view:first-child{color:#010101;font-size:38rpx;}
+.head .num-box .right view:last-child{color:#8f8f8f;font-size:25rpx;}
+.dis{height:20rpx;width:100%;background-color:#f1f1f1;}
+.sponsor{display:flex;align-items:center;padding:20rpx;position:relative;background-color:#fff;line-height:40rpx;text-align:left;border-radius:0;}
+.sponsor.line{border-bottom:1px solid #f1f1f1;}
+.sponsor .img-box{margin-right:20rpx;}
+.sponsor .img-box image{width:120rpx;height:120rpx;}
+.sponsor .text view:first-child{color:#000000;font-weight:600;font-size:32rpx;}
+.sponsor .text view:last-child{color:#989898;font-size:28rpx;margin-top:10rpx;}
+.sponsor .spon-icon{position:absolute;background-color:#c1c1c1;color:#fff;top:0;right:0;padding:0 7rpx;font-size:25rpx;}
+.wx-btn{background-image:url(http://xtepactive.image.alimmdn.com/vote/v140_button_release.png);background-position:center;background-repeat:no-repeat;background-size:100%;width:140rpx;height:140rpx;position:absolute;bottom:0;right:0;}

@@ -1,0 +1,23 @@
+<template name='activityList'>
+  <view class="act-list">
+    <block wx:for="{{listData}}">
+      <view class="act-one" data-index="{{index}}" bindtap="toDetail" data-status="{{item.status}}" data-id="{{item.id}}">
+        <view class="act-img-box">
+          <image src="{{item.image}}"></image>
+          <view class="act-tag" style="background-color:{{item.bgColor}}">
+            <text>{{item.statusStr}}</text>
+          </view>
+        </view>
+        <view class="act-content-box fir">
+          <view>开奖时间：{{item.openTime}}</view>
+          <view style="color:{{item.isActiveColor}}">已参与人数：{{item.userCount}}人</view>
+        </view>
+        <view class="act-content-box">
+          <view>活动发起人：</view>
+          <view class="usr-data">
+            <image src="{{item.face}}"></image>{{item.nickname}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>

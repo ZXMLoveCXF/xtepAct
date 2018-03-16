@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "首届颜值大赛",
+  "navigationBarBackgroundColor": "#4cb0f4",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

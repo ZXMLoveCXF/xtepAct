@@ -1,0 +1,31 @@
+/* pages/vote/rank/rank.wxss */
+.head{height:80rpx;background-color:#4cb0f4;width:100%;margin-bottom:-20rpx;}
+.body{padding:30rpx;border-radius:20rpx 20rpx 0 0;background-color:#fff;-moz-box-shadow:0px 0px 13px #ABABAB; -webkit-box-shadow:0px 0px 13px #ABABAB; box-shadow:0px 0px 13px #ABABAB;}
+.navbar{display:flex;justify-content:center;}
+.navbar .inner{background-color:#f1f1f1;height:90rpx;line-height:90rpx;width:250rpx;text-align:center;color:#c1c1c1;}
+.navbar .inner.l{border-radius:15rpx 0 0 15rpx;}
+.navbar .inner.r{border-radius:0 15rpx 15rpx 0;}
+.navbar .inner.on{color:#fff;background-color:#4fb0f4;}
+.list{margin-top:40rpx;}
+.list .one{display:flex;align-items:center;margin:45rpx 0;}
+.list .one .face image{width:140rpx;height:140rpx;border:1px solid #f1f1f1;border-radius:10rpx;}
+.list .one .box{width:700rpx;margin-left:20rpx;}
+.list .one .box .box-1{display:flex;justify-content:space-between;align-items:center;}
+.list .one .box .box-1 text{font-size:32rpx;color:#010101;}
+.list .one .box .box-2{display:flex;align-items:center;margin-top:20rpx;}
+.list .one .box .box-2 .uname{background-color:#eff8ff;padding:5rpx 20rpx;border-radius:20rpx;color:#4fb0f5;font-size:26rpx;}
+.list .one .rank{margin-right:20rpx;display:flex;justify-content:center;align-items:center;}
+.list .one .rank.top3{background-position:center;background-repeat:no-repeat;background-size:100%;width:60rpx;height:60rpx;}
+.list .one .rank.top3.r1{background-image:url(http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180308104202XBqVhZPU.png);}
+.list .one .rank.top3.r2{background-image:url(http://xtep321go-live.image.alimmdn.com/image/system/users/admin/201803081042080cJdTpnj.png);}
+.list .one .rank.top3.r3{background-image:url(http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180308104512YPZEWVeP.png);}
+.list .one .sex{background-position:center;background-repeat:no-repeat;background-size:100%;width:32rpx;height:32rpx;margin-right:10rpx;}
+.list .one .sex.female{background-image:url(http://xtepactive.image.alimmdn.com/vote/v140_icon_famale.png);}
+.list .one .sex.male{background-image:url(http://xtepactive.image.alimmdn.com/vote/v140_icon_man.png);}
+.bottom{height:13rpx;background-color:#fff;margin-bottom:50rpx;}
+.tip{position:fixed;bottom:0;background-color:#fffced;height:70rpx;color:#f34f4e;line-height:70rpx;font-size:28rpx;width:750rpx;padding:0 20rpx;}
+
+.content{width:690rpx;text-align:center;}
+.content .tip1{width:690rpx;display:flex;justify-content:center;}
+.content .tip1 image{width:180rpx;height:105rpx;padding-bottom:20rpx;}
+.content .tip1 text{color:#c2c2c2;}

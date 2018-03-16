@@ -1,0 +1,2 @@
+<!--pages/activity/introduce/introduce.wxml-->
+<web-view src="{{url}}"></web-view>

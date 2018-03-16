@@ -1,0 +1,18 @@
+/* pages/vote/join/join.wxss */
+.head{height:30rpx;background-color:#4cb0f4;width:100%;margin-bottom:-20rpx;}
+.body{padding:30rpx;border-radius:20rpx 20rpx 0 0;background-color:#fff;margin-bottom:150rpx;padding-top:10rpx;}
+.body .one{display:flex;align-items:center;margin:50rpx 0;}
+.body .one .text1{font-weight:600;width:120rpx;}
+.body .one .sex-group .male{margin-right:100rpx;}
+.body .box{background-color:#fbfbfb;width:650rpx;border-radius:20rpx;padding:20rpx 20rpx;position:relative;}
+.body .box.top{border-radius:20rpx 20rpx 0 0;height:160rpx;}
+.body .box.bot{border-radius:0 0 20rpx 20rpx;height:auto}
+.body .box textarea{width:100%;height:160rpx;}
+.body .box .img-list{display:flex;flex-wrap:wrap;justify-content:flex-start;}
+.body .box .images{margin-right:12rpx;margin-bottom:10rpx;}
+.body .box .images .img{border:1px solid #e0e0e0;width:200rpx;height:200rpx;border-radius:20rpx;color:#e0e0e0;font-size:80rpx;line-height:190rpx;text-align:center;}
+.body .box .images .img image{width:200rpx;height:200rpx;border-radius:20rpx;}
+.text{display:flex;justify-content:space-between;color:#e0e0e0;margin:15rpx 2rpx;}
+.btn-join{border-top:1px solid #eeeeee;padding:0 30rpx;background-color:#fff;width:690rpx;height:150rpx;position:fixed;bottom:0;z-index:999;}
+.btn-join .btn{text-align:center;height:100rpx;border-radius:100rpx;margin-top:20rpx;line-height:100rpx;font-size:32rpx;width:690rpx;background-color:#4fb0f4;color:#fff;}
+button{margin:0;padding:0;background-color:#fff;}

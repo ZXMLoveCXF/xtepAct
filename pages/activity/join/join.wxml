@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <form report-submit="true" bindsubmit="toBind">
+  <view class="box">
+    <view class="int">
+      <view class="left-box">
+        <text>手机号：</text>
+        <input type="number" value="{{phone}}" bindinput="phoneInput" name="phone" placeholder-class="phcolor" placeholder='请输入手机号' maxlength='11' />
+      </view>
+      <!-- <view class="code" bindtap="getCode">{{codeContent}}</view> -->
+      <button class="code {{isShow?'show':'hide'}}" disabled="{{isGetCode}}" bindtap="getCode">获取验证码</button>
+      <view class="code {{isShow?'hide':'show'}}">重新发送{{countdown}}秒</view>
+    </view>
+    <view class="int">
+      <view class="left-box">
+        <text>验证码：</text>
+        <input type="number" bindinput="codeInput" name="code" placeholder-class="phcolor" placeholder='请输入验证码' maxlength='4'></input>
+      </view>
+    </view>
+  </view>
+  <button class="btn" formType="submit" >马上参与</button>
+  </form>
+</view>

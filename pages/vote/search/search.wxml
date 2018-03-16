@@ -1,0 +1,46 @@
+<!--pages/vote/search/search.wxml-->
+<view class="container">
+    <view class="head"></view>
+    <view class="body">
+          <view class="list">
+                <view class="data">
+                    <block wx:for="{{listData}}">
+                        <view class="one">
+                            <view data-id='{{item.id}}' bindtap='toDetail'>
+                            <view class="one-img">
+                                <image src="{{item.cover}}"></image>
+                                <view class="uname-g">
+                                    <view class="uname-box">
+                                        <view class="bg1"></view><view class="bg2">{{item.schoolName}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="name">{{item.name}}</view>
+                            <view class="num">
+                                <text>{{item.id}}号</text>
+                                <text>{{item.id==curId?item.voteNum+1:item.voteNum}}票</text>
+                            </view>
+                            </view>
+                            <view class="btn {{item.voteFlg==0?'':'off'}}" data-obj="{{item}}" 
+                                bindtap="{{item.voteFlg==0?'vote':''}}">
+                                {{item.voteFlg==0?'给TA投票':item.voteFlg==1?'已投票':'给TA投票'}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="tips1">
+                    <view wx:if="{{!isNeedScrollLoad && isShowList}}" class="loadstatus">
+                        <text>没有更多内容了</text>
+                    </view>
+                </view>
+                <view class="content" style="margin-top:{{scrollHeight/2}}rpx" wx:if="{{!isShowList}}">
+                    <view class="tip">
+                        <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180122135745sKMqaiQL.png"></image>
+                    </view>
+                    <view class="tip"><text>搜索用户不存在</text></view>
+                </view>
+          </view>
+    </view>
+    <view class="bottom"></view>
+
+</view>

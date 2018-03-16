@@ -1,0 +1,32 @@
+<!--pages/vote/rank/rank.wxml-->
+<view class="container">
+    <view class="head"></view>
+    <view class="body">
+        <view class="navbar">
+            <block wx:for="{{navData}}">
+                <view class="inner {{index==0?'l':'r'}} {{item.active?'on':''}}" data-index="{{index}}" 
+                    bindtap="switchNavData">{{item.title}}</view>
+            </block>
+        </view>
+        <view class="list">
+            <block wx:for="{{listData}}">
+                <view class="one">
+                    <view class="rank top3 r{{item.ranking}}"><text wx:if="{{item.ranking > 3}}">{{item.ranking}}</text></view>
+                    <view class="face"><image src="{{item.face}}"></image></view>
+                    <view class="box">
+                        <view class="box-1"><text>{{item.name}}</text><text>{{item.voteNum}}票</text></view>
+                        <view class="box-2"><view class="sex {{item.gender==1?'male':'female'}}"></view>
+                        <view class="uname">{{item.schoolName}}</view></view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="content" style="margin-top:{{scrollHeight/2}}rpx" wx:if="{{!isShowList}}">
+          <view class="tip1">
+              <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180122135745sKMqaiQL.png"></image>
+          </view>
+          <view class="tip1"><text>空空如也</text></view>
+      </view>
+    </view>
+    <view class="tip">获奖人员请添加微信号W123456，联系客服人员领取奖品</view>
+</view>

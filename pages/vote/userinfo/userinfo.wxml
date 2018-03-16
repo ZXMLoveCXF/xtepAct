@@ -1,0 +1,59 @@
+<!--pages/vote/userinfo/userinfo.wxml-->
+<view class="container" wx:if="{{isShowDetail}}">
+    <view class="head"></view>
+    <view class="info">
+        <view class="left">
+            <image src="{{detail.face}}"></image>
+            <view class="no">{{detail.id}}号</view>
+        </view>
+        <view class="right">
+            <view class="home" bindtap='toHome'></view>
+            <view class="content">
+              <view class="sex {{detail.gender==0?'female':'male'}}"></view> 
+              <text class="name">{{detail.name}}</text>
+            </view>
+            <view class="uname"><text>{{detail.schoolName}}</text></view>
+            <view class="intro">
+                <text>{{detail.mark}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="count">
+        <view class="one c">
+            <view class="num"><text>{{detail.rankingNum}}</text></view>
+            <view class="content"><text>当前排名</text></view>
+        </view>
+        <view class="one c">
+            <view class="num"><text>{{detail.voteNum}}</text></view>
+            <view class="content"><text>当前票数</text></view>
+        </view>
+        <view class="one c">
+            <view class="num"><text>{{detail.diffVoteNum}}</text></view>
+            <view class="content"><text>距上一名票数还差</text></view>
+        </view>
+    </view>
+    <view class="btn" wx:if="{{!endFlg}}">
+        <button data-statu="open" bindtap='powerDrawer'><view class="one l">邀请投票</view></button>
+        <view class="one r {{canVoteFlg?'':'off'}}" bindtap="{{canVoteFlg?'vote':''}}" data-id="{{uid}}">给TA投票</view>
+    </view>
+    <view class="act-intro" style="display:none">
+        <view class="link" bindtap='toIntro'>活动介绍<view class="icon-more"></view></view>
+    </view>
+    <view class="show">
+        <view class="title" style="display:none">个人风采</view>
+        <block wx:for="{{imgList}}">
+            <image src="{{item.url}}" mode="widthFix"></image>
+        </block>
+    </view>
+
+<!--mask-->  
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">  
+  <!--drawer content-->  
+  <view class="drawer_content">
+    <button class="drawer_title line" open-type="share">邀请微信好友</button>  
+    <button class="drawer_title line" bindtap="toShare">生成分享图片</button>  
+    <button class="drawer_title" data-statu="close" bindtap="powerDrawer">取消</button>  
+  </view>  
+</view>
+</view>

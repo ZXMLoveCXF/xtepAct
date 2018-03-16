@@ -1,0 +1,45 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+    <view>
+        <view class="head">
+            <image src="{{face}}"></image>
+            <view class="name"><text>{{nickname}}</text></view>
+            <view class="num-box">
+                <view class="left" data-type='1' bindtap='myAct'>
+                    <view>{{joinNum}}</view>
+                    <view>参与活动次数</view>
+                </view>
+                <view class="right" data-type='2' bindtap='myAct'>
+                    <view>{{winningNum}}</view>
+                    <view>中奖次数</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="dis"></view>
+        <block wx:if="{{!hiddenFlg}}">
+          <button class="sponsor line" bindtap='to321go'>
+              <view class="spon-icon">Sponsor</view>
+              <view class="img-box">
+                  <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180306112734mvxzkEt1.png"></image>
+              </view>
+              <view class="text">
+                  <view>321GO-专业跑步助手</view>
+                  <view>专业为跑者和跑团服务,让运动更科学、更快乐</view>
+              </view>
+          </button>
+          <button class="sponsor" bindtap='toShop' style='display:none;'>
+              <view class="spon-icon">Sponsor</view>
+              <view class="img-box">
+                  <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180309101942zY5pxMKr.png"></image>
+              </view>
+              <view class="text">
+                  <view>特步微商城-官方直营</view>
+                  <view>支持零元分销，由总部直接发货，正品保证</view>
+              </view>
+          </button>
+          <view class="dis"></view>
+        </block>
+    </view>
+</view>

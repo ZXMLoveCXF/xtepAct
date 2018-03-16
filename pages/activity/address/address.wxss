@@ -1,0 +1,13 @@
+/* pages/activity/address/address.wxss */
+page{height:100%;background-color:#f1f1f1}
+.box{background-color:#fff;margin-top:10rpx;}
+.box.dis{margin-top:20rpx;}
+.box .int{height:90rpx;margin:10rpx 0;padding:0 20rpx;display:flex;line-height:90rpx;}
+.box .int.sml{border-bottom:1px solid #e0e0e0;}
+.box .int text{width:140rpx;}
+.box .int input{height:90rpx;width:570rpx;}
+.box .text{display:flex;}
+.box .text text{width:130rpx;padding:20rpx 20rpx;padding-right:0}
+.box .text textarea{height:200rpx;width:570rpx;padding-top:10rpx;}
+.btn{background-color:#4fb0f4;color:#fff;text-align:center;margin:0 30rpx;height:100rpx;border-radius:100rpx;line-height:100rpx;margin-top:100rpx;font-size:35rpx;font-weight:600}
+.warn{color:#fdfffe;background-color:#e64240;height:60rpx;line-height:60rpx;font-size:28rpx;padding:10rpx 20rpx;}

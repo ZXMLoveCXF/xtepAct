@@ -1,0 +1,19 @@
+<!--pages/mine/actList/actList.wxml-->
+<import src="../../index/templates/activityList.wxml" />
+
+<view class="container">
+    <view style="margin-top:-50rpx;">
+        <template is="activityList" data="{{listData}}" />
+    </view>
+
+    <view class="tips1" wx:if="{{!isNeedScrollLoad && isShowList}}">
+        <view class="loadstatus">
+            <text>没有更多内容了</text>
+        </view>
+    </view>
+
+    <view class="content" style="margin-top:{{scrollHeight/2}}rpx" wx:if="{{!isShowList}}">
+        <view><image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180122135745sKMqaiQL.png"></image></view>
+        <view><text>暂无{{curPageName}}活动</text></view>
+    </view>
+</view>

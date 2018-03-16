@@ -1,0 +1,6 @@
+/**app.wxss**/
+.container {font-size:30rpx;overflow-x:hidden;}
+.phcolor{color:#d2d2d2;}
+.loadstatus{display:flex;flex-direction:row;align-items:center;align-self:center;justify-content:center;font-size:28rpx;color:#888;padding:15rpx 0;}
+.loadstatus icon{vertical-align:middle;height:44rpx}
+button::after{border:none;}

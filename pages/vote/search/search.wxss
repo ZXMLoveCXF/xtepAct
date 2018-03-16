@@ -1,0 +1,28 @@
+/* pages/vote/search/search.wxss */
+.head{height:80rpx;background-color:#4cb0f4;width:100%;margin-bottom:-20rpx;}
+image{display:block;}
+.body{border-radius:20rpx 20rpx 0 0;background-color:#fff;-moz-box-shadow:0px 0px 13px #ABABAB; -webkit-box-shadow:0px 0px 13px #ABABAB; box-shadow:0px 0px 13px #ABABAB;}
+.bottom{background-color:#fff;height:10rpx;}
+.list{padding-top:10rpx;}
+.list .navbar{display:flex;justify-content:space-around;border-bottom:1px solid #f1f1f1;padding:25rpx 0;}
+.list .navbar .inner{color:#c1c1c1;font-size:35rpx;}
+.list .navbar .inner.on{color:#4bb0f6;font-weight:600;}
+.list .data{display:flex;flex-wrap:wrap;justify-content:space-between;padding:0 10rpx;}
+.list .data .one{display:inline-block;border:1px solid #f1f1f1;width:333rpx;border-radius:10rpx;margin:15rpx;}
+.list .data .one .one-img{position:relative;}
+.list .data .one image{width:330rpx;height:330rpx;border-radius:10rpx 10rpx 0 0;margin:0 auto;}
+.list .data .one .name{font-size:35rpx;font-weight:600;padding:10rpx 20rpx;text-align:left;}
+.list .data .one .num{display:flex;justify-content:space-between;padding:10rpx 20rpx;font-size:28rpx;}
+.list .data .one .num text:last-child{color:#6a6a6a;}
+.list .data .one .btn{color:#fff;background-color:#4db0f4;width:250rpx;margin:20rpx auto;padding:20rpx 0;border-radius:100rpx;font-size:25rpx;text-align:center;}
+.list .data .one .btn.off{background-color:#c1c1c1;}
+.uname-g{position:absolute;bottom:20rpx;left:20rpx;}
+.uname-box{display:flex;justify-content:flex-start;position:relative;opacity:.7;width:290rpx;}
+.uname-box .bg1{width:0;height:0;border-top: 18rpx solid transparent;border-right:18rpx solid #2d3132;border-bottom:18rpx solid transparent;font-size: 20rpx;color:#fff;}
+.uname-box .bg2{background-color:#2d3132;height:36rpx;border-radius:2rpx 5rpx 5rpx 2rpx;color:#fff;font-size:25rpx;line-height:36rpx;text-align:left;padding:0 10rpx;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.uname-box .dian{position:absolute;width:20rpx;height:36rpx;color:#fff;left:5rpx;font-size:50rpx;line-height:36rpx;}
+
+.content{width:550rpx;text-align:center;}
+.content .tip{width:750rpx;display:flex;justify-content:center;}
+.content .tip image{width:180rpx;height:105rpx;padding-bottom:20rpx;}
+.content .tip text{color:#c2c2c2;}
