@@ -1,0 +1,51 @@
+/* pages/vote/detail/detail.wxss */
+page{background-color:#f1f1f1;height:100%;}
+image{display:block;}
+.head{margin-bottom:-30rpx;}
+.head image{width:100%;height:auto;}
+.box .intro{color:#4bb0f4;font-size:28rpx;text-align:right;margin-top:20rpx;padding-top:20rpx;margin-right:10rpx;}
+.box .join-box{text-align:center;background-color:#fff;border-radius:20rpx;}
+.box .join-box.dis{margin-top:20rpx;padding-top:30rpx;}
+.box .join-box .title{color:#8d8d8d;font-size:28rpx;}
+.box .join-box .title.dis{color:#939393;font-size:38rpx;font-weight:600;}
+.box .join-box .time{color:#8d8d8d;margin:10rpx 0;}
+.box .join-box .time text{font-size:42rpx;color:#4cb0f4;margin:0 10rpx;}
+.box .join-box .count{margin:20rpx 0;font-size:28rpx;}
+.box .join-box .count.dis{margin:20rpx 0;color:#939393;font-size:25rpx}
+.box .join-box .btn-box{padding-bottom:20rpx;position:relative;}
+.box .join-box .btn-box .line{border-bottom:1px solid #f1f1f1;margin-top:80rpx;width:750rpx;}
+.box .join-box .btn-box .btn-group{display:flex;justify-content:center;margin-top:68rpx;}
+.box .join-box .btn-box .btn-group .btn{width:250rpx;font-size:30rpx;padding:20rpx;border-radius:100rpx;margin:-45rpx 20rpx 0 20rpx;}
+.box .join-box .btn-box .btn-group .btn.l{background-color:#fff;border:1px solid #4db0f4;color:#4db0f4;}
+.box .join-box .btn-box .btn-group .btn.r{background-color:#4db0f4;color:#fff;}
+.box .join-box .search{margin:0 30rpx;display:flex;align-items:center;padding:10rpx 30rpx;border-radius:200rpx;background-color:#f7f7f7;}
+.box .join-box .search .icon{background-image:url(http://xtepactive.image.alimmdn.com/vote/v140_icon_search.png);background-position:center;background-repeat:no-repeat;background-size:100%;width:30rpx;height:30rpx;margin-right:10rpx;}
+.box .join-box .search input{text-align:left;width:100%;}
+.box .join-box .list{margin-top:10rpx;}
+.box .join-box .list .navbar{display:flex;justify-content:space-around;border-bottom:1px solid #f1f1f1;padding:25rpx 0;}
+.box .join-box .list .navbar .inner{color:#c1c1c1;font-size:32rpx;width:50%;}
+.box .join-box .list .navbar .inner.on{color:#4bb0f6;font-weight:600;}
+.box .join-box .list .navbar1{display:flex;justify-content:center;margin:30rpx 0;font-size:28rpx;padding-bottom:20rpx;}
+.box .join-box .list .navbar1 .inner{background-color:#f1f1f1;height:80rpx;line-height:80rpx;width:250rpx;text-align:center;color:#c1c1c1;}
+.box .join-box .list .navbar1 .inner.l{border-radius:15rpx 0 0 15rpx;}
+.box .join-box .list .navbar1 .inner.r{border-radius:0 15rpx 15rpx 0;}
+.box .join-box .list .navbar1 .inner.on{color:#fff;background-color:#4fb0f4;}
+.box .join-box .list .data{display:flex;flex-wrap:wrap;justify-content:space-between;padding:0 10rpx;}
+.box .join-box .list .data .one{display:inline-block;border:1px solid #f1f1f1;width:333rpx;border-radius:10rpx;margin:15rpx;}
+.box .join-box .list .data .one .one-img{position:relative;}
+.box .join-box .list .data .one image{width:330rpx;height:330rpx;border-radius:10rpx 10rpx 0 0;margin:0 auto;}
+.box .join-box .list .data .one .name{font-size:35rpx;font-weight:600;padding:10rpx 20rpx;text-align:left;}
+.box .join-box .list .data .one .num{display:flex;justify-content:space-between;padding:10rpx 20rpx;font-size:28rpx;padding-top:0rpx;}
+.box .join-box .list .data .one .num text:last-child{color:#6a6a6a;}
+.box .join-box .list .data .one .btn{color:#fff;background-color:#4db0f4;width:280rpx;margin:20rpx auto;padding:20rpx 0;border-radius:100rpx;font-size:25rpx;text-align:center;}
+.box .join-box .list .data .one .btn.off{background-color:#c1c1c1;}
+.rank{position:absolute;top:-2rpx;left:-2rpx;width:75rpx;height:75rpx;color:#fff;display:flex;align-items:center;justify-content:center;font-style:italic;font-size:25rpx;line-height:30rpx;}
+.rank .crown{background-image:url(http://xtepactive.image.alimmdn.com/vote/icon_crown.png);background-position:center;background-repeat:no-repeat;background-size:100%;width:20rpx;height:20rpx;margin:0 auto;}
+.rank text{margin-right:10rpx;}
+.rank.top3{font-weight:600;}
+.rank .no{font-weight:600;}
+.one-img .uname-g{position:absolute;bottom:20rpx;left:20rpx;}
+.uname-box{display:flex;justify-content:flex-start;position:relative;opacity:.7;width:290rpx;}
+.uname-box .bg1{width:0;height:0;border-top: 18rpx solid transparent;border-right:18rpx solid #2d3132;border-bottom:18rpx solid transparent;font-size: 20rpx;color:#fff;}
+.uname-box .bg2{background-color:#2d3132;height:36rpx;border-radius:2rpx 5rpx 5rpx 2rpx;color:#fff;font-size:25rpx;line-height:36rpx;text-align:left;padding:0 10rpx;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.uname-box .dian{position:absolute;width:20rpx;height:36rpx;color:#fff;left:5rpx;font-size:50rpx;line-height:36rpx;}

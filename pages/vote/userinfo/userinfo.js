@@ -9,14 +9,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: '2c939d8c61fa7e5d0161ff4936900001',
+    id: '', //活动id
     isShowDetail: false //是否展示详情
   },
 
   toHome: function(){
-    wx.reLaunch({
-      url: '../vote'
-    })
+    var that = this
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 4]
+    var prevPage1 = pages[pages.length - 3]
+    if (prevPage){
+      wx.navigateBack({
+        delta: 2
+      })
+    }else if(prevPage1){
+      wx.navigateBack({
+        delta: 1
+      })
+    }else {
+      wx.reLaunch({
+        url: '/pages/vote/detail/detail?id='+that.data.id
+      })
+    }
   },
 
   /**
@@ -73,7 +87,10 @@ Page({
           endFlg: data.endFlg,
           canVoteFlg: data.canVoteFlg,
           markUrl: data.markUrl,
-          imgList: data.imgList
+          imgList: data.imgList,
+          sharePicUrl: data.sharePicUrl,
+          title: data.title,
+          cover: data.cover
         })
         wx.stopPullDownRefresh()
         that.setData({
@@ -138,8 +155,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    var id = options.id
+    var uid = options.uid
     that.setData({
-      uid: options.uid
+      id: id ? id : '2c939d8c61fa7e5d0161ff4936900001',
+      uid: uid
     })
     app.checkLogin(function () {
       that.getDetail()
@@ -157,11 +177,13 @@ Page({
   toShare: function (e) {
     var that = this
     that.util('close')
+    console.log(that.data.title)
     wx.navigateTo({
-      url: '../share/share?image=' + 'http://xtepactive.image.alimmdn.com/vote/vote_share_img.jpg'
+      url: '../share/share?image=' + that.data.cover
       + '&codeImage=' + that.data.detail.erweimaUrl
       + '&face=' + that.data.detail.face 
       + '&nickname=' + that.data.detail.name
+      + '&title=' + that.data.title
       + '&type=' + 'vote'
     })
   },
@@ -259,14 +281,16 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    that.util('close')
+    // that.util('close')
+    this.setData({
+      showModalStatus: false
+    });
     var initData = app.getCache('initdata')
     var wxuser = initData.wxuser
-    var shareImage = 'http://xtepactive.image.alimmdn.com/vote/vote_share.jpg';
     return {
       title: wxuser.nickname + '邀你参与[321GO]' + '投票活动',
-      imageUrl: shareImage,
-      path: '/pages/vote/userinfo/userinfo?uid=' + that.data.uid,
+      imageUrl: that.data.sharePicUrl,
+      path: '/pages/vote/userinfo/userinfo?uid=' + that.data.uid + '&id='+that.data.id,
       success: function (res) {
         // 分享成功
       },

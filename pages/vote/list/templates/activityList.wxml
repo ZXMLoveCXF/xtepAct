@@ -7,12 +7,8 @@
           <view class="act-tag" style="background-color:{{item.bgColor}}"><text>{{item.statusStr}}</text></view>
         </view>
         <view class="act-content-box fir">
-          <view>开奖时间：{{item.openTime}}</view>
-          <view style="color:{{item.isActiveColor}}">已参与人数：{{item.userCount}}人</view>
-        </view>
-        <view class="act-content-box">
-          <view>活动发起人：</view>
-          <view class="usr-data"><image src="{{item.face}}"></image>{{item.nickname}}</view>
+          <view>活动时间：{{item.startTime}}-{{item.endTime}}</view>
+          <view style="color:#4bb1f3">已参与人数：{{item.userCount}}人</view>
         </view>
       </view>
     </block>

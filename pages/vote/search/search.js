@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: '2c939d8c61fa7e5d0161ff4936900001',
+    id: '', //活动id
     curId: '', //当前点击项
     curNavIndex: 0,  //当前tab索引
     total: 0, //总数
@@ -27,7 +27,7 @@ Page({
     var dataset = e.currentTarget.dataset
     var uid = dataset.id
     wx.navigateTo({
-      url: '../userinfo/userinfo?uid=' + uid,
+      url: '../userinfo/userinfo?uid=' + uid+'&id='+that.data.id,
     })
   }, 
 
@@ -132,7 +132,7 @@ Page({
     var obj = dataset.obj
     console.log(obj)
     if (obj.voteFlg == 2) {
-      app.showMsgModel('提示', '今天投票数已用完')
+      app.showMsgModel('提示', '今天投票数已用完，每天最多投三票')
       return false;
     }
     var uid = obj.id
@@ -236,6 +236,10 @@ Page({
   onLoad: function (options) {
     var that = this
     var search = options.search
+    var id = options.id
+    that.setData({
+      id: id ? id : '2c939d8c61fa7e5d0161ff4936900001'
+    })
     wx.getSystemInfo({
       success: function (res) {
         that.setData({

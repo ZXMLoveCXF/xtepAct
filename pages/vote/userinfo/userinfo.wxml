@@ -12,7 +12,7 @@
               <view class="sex {{detail.gender==0?'female':'male'}}"></view> 
               <text class="name">{{detail.name}}</text>
             </view>
-            <view class="uname"><text>{{detail.schoolName}}</text></view>
+            <view class="uname" wx:if="{{detail.schoolName}}"><text>{{detail.schoolName}}</text></view>
             <view class="intro">
                 <text>{{detail.mark}}</text>
             </view>

@@ -63,7 +63,7 @@ App({
   },
   //整套的用户登录逻辑
   userLogin: function (callback) {
-    var that = this;
+    var that = this
 
     //if( ! this.globalData.userInfo){
     //调用登录接口
@@ -83,7 +83,7 @@ App({
               //记录token
               that.globalData.token = re.data.data.sessionId
               that.setCache('token', re.data.data.sessionId)
-              that.setCache('time', new Date().getTime())
+              that.setCache('time',new Date().getTime())
               that.getWxUser(callback)
             } else {
               console.log(re.data.err);
@@ -177,13 +177,13 @@ App({
             if (typeof callback == 'function') {
               callback()
             }
-          } else {
+          }else {
             console.log(res2.data.data.status)
           }
-        } else if (res2.statusCode == 50021) {
+        } else if (res2.statusCode == 50021){
           console.log('------------------重新登录--------------------')
           that.userLogin(callback)
-        } else {
+        }  else {
           console.log(res2.err)
         }
       },

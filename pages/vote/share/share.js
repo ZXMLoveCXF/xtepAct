@@ -36,6 +36,7 @@ Page({
       var nickname = options.nickname
       var startTime = options.startTime
       var endTime = options.endTime
+      var title = options.title
       console.log(options.codeImage)
       that.setData({
         imageUrl: imageUrl,
@@ -43,7 +44,8 @@ Page({
         startTime: startTime,
         endTime: endTime,
         faceUrl: faceUrl,
-        nickname: nickname
+        nickname: nickname,
+        title: title
       });
       that.drawActImage()
     }
@@ -85,7 +87,7 @@ Page({
     ctx.fillText(data.nickname, x, tH + (7 * pH))
     ctx.setFillStyle('#4db0f4')
     ctx.setFontSize(1.8 * pH)
-    ctx.fillText('我参与了首届颜值大赛', x, tH + (10 * pH))
+    ctx.fillText('我参与了' + that.data.title, x, tH + (10 * pH))
     ctx.fillText('快来帮我投一票吧', x, tH + (13 * pH))
     ctx.setFillStyle('#000000')
     ctx.setTextAlign('center')

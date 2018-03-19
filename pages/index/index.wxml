@@ -12,9 +12,7 @@
     </view>
   </view>
   <view style="display:{{isLoadding?'none':'block'}}" style="margin-top:50rpx;">
-    <view class="loading" style="display:{{showLoading?'block':'none'}}">
-      <image src="/resources/images/loading.gif" />
-    </view>
+    <view class="loading" style="display:{{showLoading?'block':'none'}}"><image src="/resources/images/loading.gif" /></view>
     <block wx:if="{{curNavIndex==0}}">
       <template is="activityList" data="{{listData:preListData}}" />
     </block>
@@ -25,17 +23,13 @@
       <template is="activityList" data="{{listData:endListData}}" />
     </block>
     <view class="tips1" wx:if="{{isShowList}}">
-      <view wx:if="{{hasMore == false}}" class="loadstatus">
-        <text>没有更多内容了</text>
-      </view>
+        <view wx:if="{{hasMore == false}}" class="loadstatus">
+            <text>没有更多内容了</text>
+        </view>
     </view>
     <view class="content" style="margin-top:{{scrollHeight/2}}rpx" wx:if="{{!isShowList}}">
-      <view>
-        <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180122135745sKMqaiQL.png"></image>
-      </view>
-      <view>
-        <text>暂无{{curNavName}}</text>
-      </view>
+      <view><image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180122135745sKMqaiQL.png"></image></view>
+      <view><text>暂无{{curNavName}}</text></view>
     </view>
   </view>
 </view>

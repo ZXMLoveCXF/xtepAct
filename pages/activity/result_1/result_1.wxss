@@ -13,15 +13,6 @@
 .head .detail{text-align:center;margin-top:20rpx;color:#989898;font-size:28rpx;display:flex;justify-content:center;}
 .head .detail .right-img{width:13rpx;height:18rpx;margin-left:10rpx;}
 .head .detail .right-img image{width:13rpx;height:18rpx;opacity:0.6;}
-.head .win-title{color:#f64849;text-align:center;margin-top:40rpx;}
-.head .result{text-align:center;}
-.head .result-c{text-align:center;}
-.head .result text{font-size:45rpx;font-weight:600;}
-.head .win-img{height:180rpx;width:180rpx;margin-left:255rpx;margin-top:20rpx;} 
-.head .btn-group{display:flex;justify-content:center;margin-top:68rpx;}
-.head .btn-group .btn{width:250rpx;font-size:30rpx;padding:20rpx;border-radius:100rpx;margin:-45rpx 10rpx 0 10rpx;}
-.head .btn-group .btn.l{background-color:#4db0f4;color:#fff;}
-.head .btn-group .btn.r{background-color:#fff;border:1px solid #4db0f4;color:#4db0f4;}
 .title{color:#353535;text-align:center;font-size:35rpx;display:flex;margin:90rpx auto 20rpx auto;font-weight:600;justify-content:center;}
 .title view{background-color:#353535;height:5rpx;width:25rpx;border-radius:8rpx;margin:22rpx 10rpx 0 10rpx;}
 .user-list{padding:30rpx;}

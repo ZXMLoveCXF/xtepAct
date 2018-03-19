@@ -9,13 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    placeholder: '写下你的个人简介，让更多人参与投票。',
+    placeholder: '写下你的个人简介，让更多人为你投票。',
     imageList: [],
     uploadedIds: [],
     uploadedImgs: [],
     isShowAddImg: true,
     imgNum: 0,
-    id: '2c939d8c61fa7e5d0161ff4936900001',
+    id: '', //活动id
     count: 6
   },
 
@@ -77,7 +77,7 @@ Page({
               })
               setTimeout(function(){
                 wx.navigateBack({
-                  delta: 2
+                  delta: 1
                 })
               },2000)
               
@@ -102,11 +102,20 @@ Page({
    */
   checkData: function (data) {
     var that = this
-    if (that.validatemcontact(data.name) && that.validateage(data.age) && that.validatemobile(data.mobile) 
-      && that.validateschool(data.schoolName) && that.validatemark(data.mark) && that.validateimage()) {
-      return true
+    if (that.data.isSchoolVote == '1'){
+      if (that.validatemcontact(data.name) && that.validateage(data.age) && that.validatemobile(data.mobile)
+        && that.validateschool(data.schoolName) && that.validatemark(data.mark) && that.validateimage()) {
+        return true
+      }
+      return false
+    }else {
+      if (that.validatemcontact(data.name) && that.validatemobile(data.mobile)
+       && that.validatemark(data.mark) && that.validateimage()) {
+        return true
+      }
+      return false
     }
-    return false
+    
   },
   /**
    * 验证联系人
@@ -184,7 +193,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    var id = options.id
+    var isSchoolVote = options.isSchoolVote
+    that.setData({
+      id: id ? id : '2c939d8c61fa7e5d0161ff4936900001',
+      isSchoolVote: isSchoolVote
+    })
   },
 
   /**
@@ -249,7 +264,6 @@ Page({
         that.setData({
           imgNum: that.data.uploadedImgs.length + res.tempFilePaths.length
         })
-        console.log(chooseImage)
         upload(that, res.tempFilePaths)
       }
     })

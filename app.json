@@ -3,20 +3,20 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/activity/join/join",
-    "pages/activity/join_1/join_1",
     "pages/activity/detail/detail",
     "pages/activity/result/result",
     "pages/activity/address/address",
     "pages/activity/share/share",
     "pages/activity/introduce/introduce",
     "pages/mine/mine",
-    "pages/vote/vote",
     "pages/vote/userinfo/userinfo",
     "pages/vote/join/join",
     "pages/vote/rank/rank",
     "pages/vote/search/search",
     "pages/mine/actList/actList",
-    "pages/vote/share/share"
+    "pages/vote/share/share",
+    "pages/vote/list/list",
+    "pages/vote/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,7 +38,7 @@
         "selectedIconPath": "/resources/images/tabbar_activity_sel.png"
       },
       {
-        "pagePath": "pages/vote/vote",
+        "pagePath": "pages/vote/list/list",
         "text": "投票",
         "iconPath": "/resources/images/tabbar_vote.png",
         "selectedIconPath": "/resources/images/tabbar_vote_sel.png"

@@ -1,147 +1,134 @@
 <!--index.wxml-->
 <view class="container" style="display:{{isLoadding?'none':'block'}}">
   <view style="margin-bottom:150rpx;">
-    <view class="head-box">
-      <view class="act-img-box">
-        <image src="{{act.image}}"></image>
-        <view class="act-tag" style="background-color:{{act.bgColor}}">
-          <text>{{act.statusStr}}</text>
-        </view>
-        <view class="act-time-dis" wx:if="{{isCount}}">
-          <view class="act-bot"></view>
-          <view class="act-text">
-            <text>距离{{act.status=='7'?'开始':'结束'}}还有 {{countDownTime}}</text>
-          </view>
-        </view>
+  <view class="head-box">
+    <view class="act-img-box">
+      <image src="{{act.image}}"></image>
+      <view class="act-tag" style="background-color:{{act.bgColor}}"><text>{{act.statusStr}}</text></view>
+      <view class="act-time-dis" wx:if="{{isCount}}">
+        <view class="act-bot"></view>
+        <view class="act-text"><text>距离{{act.status=='7'?'开始':'结束'}}还有 {{countDownTime}}</text></view>
       </view>
-      <view class="act-content-box fir">
-        <view>开奖时间：{{act.openTime}}</view>
-        <view style="color:{{act.isActiveColor}}">已参与人数：{{act.userCount}}人</view>
-      </view>
-      <view class="act-content-box">
-        <view>活动发起人：</view>
-        <view class="usr-data">
-          <image src="{{act.face}}"></image>{{act.nickname}}
-        </view>
-      </view>
-      <!-- <view class="tran-line"></view> -->
     </view>
-    <view class="info-box" wx:if="{{act.actInfo && act.actInfo != ''}}">
-      <text>{{act.actInfo}}</text>
+    <view class="act-content-box fir">
+      <view>开奖时间：{{act.openTime}}</view>
+      <view style="color:{{act.isActiveColor}}">已参与人数：{{act.userCount}}人</view>
     </view>
-    <view class="dis"></view>
-    <!-- <view class="open-box">
-    <view class="open-img">
-      <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/201801161459131wWM99Ca.png"></image>
-    </view>
-    <text>开奖时间：{{act.openTime}}</text>
-  </view> -->
-    <view class="task-box">
-      <view class="title" style="margin-bottom:5rpx;">
-        <view></view>{{ruleTitle}}
-        <view></view>
+    <view class="act-content-box">
+      <view>活动发起人：</view>
+      <view class="usr-data">
+        <image src="{{act.face}}"></image>{{act.nickname}}
       </view>
-      <block wx:if="{{act.type == '1'}}">
-        <view wx:for="{{taskList}}">
-          <view class="task-one">
-            <view class="peo-box">
-              <image src="{{item.icon}}"></image>
-            </view>
-            <view class="left">
-              <view>{{item.content}}</view>
-              <view class="pro-box">
-                <view class="pro">
-                  <view class="on {{item.type=='run'?'gre':'blu'}}" style="width:{{item.per}}%;"></view>
-                </view>
-                <view style="display:flex;" class="{{item.type=='run'?'gre':'blu'}}">
-                  <text class="val">{{item.value}}</text>
-                  <text>{{item.type=='run'?'KM':'人'}}</text>
-                </view>
+    </view>
+    <!-- <view class="tran-line"></view> -->
+  </view>
+  <view class="task-box">
+    <view class="title" style="margin-bottom:5rpx;" wx:if="{{act.type != '3'}}">
+      <view></view>{{ruleTitle}}<view></view>
+    </view>
+    <block wx:if="{{act.type == '1'}}">
+      <view wx:for="{{taskList}}">
+        <view class="task-one">
+          <view class="peo-box"><image src="{{item.icon}}"></image></view>
+          <view class="left">
+            <view>{{item.content}}</view>
+            <view class="pro-box">                                          
+              <view class="pro">
+                <view class="on {{item.type=='run'?'gre':'blu'}}" style="width:{{item.per}}%;"></view>
+              </view>
+              <view style="display:flex;" class="{{item.type=='run'?'gre':'blu'}}">
+                <text class="val">{{item.value}}</text>
+                <text>{{item.type=='run'?'KM':'人'}}</text>
               </view>
             </view>
-            <view class="right {{item.taskClass}} {{item.type=='run'?'gre':'blu'}}" data-statu="open" bindtap="{{item.taskClass=='off'?'':item.type=='run'?'toIntroduce':'powerDrawer'}}">
-              <text>{{item.type=='run'?'去跑步':'我要邀请'}}</text>
-            </view>
+          </view>
+          <view class="right {{item.taskClass}} {{item.type=='run'?'gre':'blu'}}" data-statu="open" 
+            bindtap="{{item.taskClass=='off'?'':item.type=='run'?'toIntroduce':'powerDrawer'}}">
+            <text>{{item.type=='run'?'去跑步':'我要邀请'}}</text>
           </view>
         </view>
-      </block>
-      <block wx:if="{{act.type == '2'}}">
-        <view class="int-box">
-          <view class="line-one">
-            <view class="num" bindtap="showQuesMark">
-              <text class="p-num">{{act.prizeNum}}</text>
-            </view>
-            <view class="content">
-              <text>当前奖品数量</text>
-            </view>
-          </view>
-          <view class="ver-line">
-          </view>
-          <view class="line-one">
-            <view class="num">
-              <text>{{act.userCount}}</text>
-            </view>
-            <view class="content">
-              <text>当前参与人数</text>
-            </view>
-          </view>
-          <view class="ques-mark" style="display:{{showQuesMark?'block':'none'}};">
-            <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180226120010WTpY9NnM.png"></image>
-            <text>每增加{{act.perUserNum}}人，奖品数量+1</text>
-          </view>
-        </view>
-        <view class="int-btn">
-          <button data-statu="open" class="btn {{act.isInvite?'':'off'}}" bindtap="{{act.isInvite?'powerDrawer':''}}">我要邀请</button>
-        </view>
-        <view class="num-tip-box">还需
-          <text>{{act.resCount}}</text>人参加，奖品数量
-          <text>+1</text>
-        </view>
-        <view class="tran-line"></view>
-      </block>
-      <view class="tip">
-        <text>{{act.remind}}</text>
       </view>
-    </view>
-    <view class="dis"></view>
-
-    <view class="task-box" wx:if="{{act.prizeList}}">
-      <view class="title">
-        <view></view>本期奖品
-        <view></view>
+    </block>
+    <block wx:if="{{act.type == '2'}}">
+      <view class="int-box">
+        <view class="line-one">
+          <view class="num" bindtap="showQuesMark">
+            <text class="p-num">{{act.prizeNum}}</text>
+          </view>
+          <view class="content"><text>当前奖品数量</text></view>
+        </view>
+        <view class="ver-line">
+        </view>
+        <view class="line-one">
+          <view class="num"><text>{{act.userCount}}</text></view>
+          <view class="content"><text>当前参与人数</text></view>
+        </view>
+        <view class="ques-mark" style="display:{{showQuesMark?'block':'none'}};">
+          <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180226120010WTpY9NnM.png"></image>
+          <text>每增加{{act.perUserNum}}人，奖品数量+1</text>
+        </view>
       </view>
-      <block wx:for="{{act.prizeList}}">
-        <image src="{{item.url}}" mode="widthFix" style="width:100%"></image>
-      </block>
+      <view class="int-btn">
+        <button data-statu="open" class="btn {{act.isInvite?'':'off'}}" bindtap="{{act.isInvite?'powerDrawer':''}}">我要邀请</button>
+      </view>
+      <view class="num-tip-box">还需<text>{{act.resCount}}</text>人参加，奖品数量<text>+1</text></view>
+      <view class="tran-line"></view>
+    </block>
+    <block wx:if="{{act.type == '3'}}">
+      <view class="act-one">  
+        <view>
+          <view class="act-title"><text>活动一：跑量换奖品</text></view>
+          <view class="act-result">当前最高跑步里程：<text class="num">12</text><text>KM</text></view>
+          <view class="act-content">跑步里程数越多，奖品越大</view>
+        </view>
+        <view>
+          <view class="btn">去跑步</view>
+        </view>
+      </view>
+      <view class="act-one">  
+        <view>
+          <view class="act-title"><text>活动二：邀请赢跑鞋</text></view>
+          <view class="act-result">当前奖品数量：<text class="num">12</text><text>份</text></view>
+          <view class="act-content">还需要<text>10人</text>参加，奖品数量<text>+1</text></view>
+        </view>
+        <view>
+          <view class="btn">去跑步</view>
+        </view>
+      </view>
+    </block>
+    <view class="tip">
+      <text>{{act.remind}}</text>
     </view>
   </view>
-
-  <!-- <view wx:if="{{directJoinFlg == '0'}}">
-    <view class="btn-join">
-      <button class="btn" disabled="{{isClick}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="background-color:{{btn.btnBgColor}};color:{{btn.btnColor}}">{{btn.btnName}}</button>
+  <view class="dis"></view>
+  <view class="info-box" wx:if="{{act.actInfo && act.actInfo != ''}}">
+    <text>{{act.actInfo}}</text>
+  </view>
+  <view class="task-box" wx:if="{{act.prizeList}}">
+    <view class="title">
+      <view></view>本期奖品
+      <view></view>
     </view>
-  </view> 
-   <view wx:else> 
-    <form report-submit="true" bindsubmit="toJoin">
+    <block wx:for="{{act.prizeList}}">
+      <image src="{{item.url}}" mode="widthFix" style="width:100%"></image>
+    </block>
+  </view>
+  </view>
+   <form report-submit="true" bindsubmit="toJoin">
       <view class="btn-join">
-        <button class="btn" disabled="{{isClick}}" formType="submit" style="background-color:{{btn.btnBgColor}};color:{{btn.btnColor}}">{{btn.btnName}}       </button>
+        <button class="btn" disabled="{{isClick}}" formType="submit" style="background-color:{{btn.btnBgColor}};color:{{btn.btnColor}}">
+          {{btn.btnName}}       
+        </button>
       </view>
     </form>
-   </view>  -->
-  <form report-submit="true" bindsubmit="toJoin">
-    <view class="btn-join">
-      <button class="btn" disabled="{{isClick}}" formType="submit" style="background-color:{{btn.btnBgColor}};color:{{btn.btnColor}}">{{btn.btnName}} </button>
-    </view>
-  </form>
 </view>
-
-<!--mask-->
+<!--mask-->  
 <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
-  <!--drawer content-->
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">  
+  <!--drawer content-->  
   <view class="drawer_content">
-    <button class="drawer_title line" open-type="share">邀请微信好友</button>
-    <button class="drawer_title line" bindtap="toShare">生成分享图片</button>
-    <button class="drawer_title" data-statu="close" bindtap="powerDrawer">取消</button>
-  </view>
-</view>
+    <button class="drawer_title line" open-type="share">邀请微信好友</button>  
+    <button class="drawer_title line" bindtap="toShare">生成分享图片</button>  
+    <button class="drawer_title" data-statu="close" bindtap="powerDrawer">取消</button>  
+  </view>  
+</view>   

@@ -7,7 +7,7 @@
             <view class="text1">姓名</view>
             <input name="name" placeholder-class="phcolor" placeholder='请输入您的名称' maxlength='6'/>
         </view>
-        <view class="one">
+        <view class="one" wx:if="{{isSchoolVote == '1'}}">
             <view class="text1">年龄</view>
             <input name="age" type="number" placeholder-class="phcolor" placeholder='请输入您的年龄' maxlength='2'/>
         </view>
@@ -15,7 +15,7 @@
             <view class="text1">手机</view>
             <input name="mobile" type="number" placeholder-class="phcolor" placeholder='请输入您的手机号码' maxlength='11'/>
         </view>
-        <view class="one">
+        <view class="one" wx:if="{{isSchoolVote == '1'}}">
             <view class="text1">学校</view>
             <input name="schoolName" placeholder-class="phcolor" placeholder='请输入您的学校名称' maxlength='20'/>
         </view>
@@ -27,7 +27,7 @@
             </radio-group>
         </view>
         <view class="box top">
-            <textarea name="mark" placeholder-class="phcolor" placeholder="{{placeholder}}" maxlength='28'/>
+            <textarea name="mark" placeholder-class="phcolor" placeholder="{{placeholder}}" maxlength='50'/>
         </view>
         <view class="box bot">
             <view class="img-list">

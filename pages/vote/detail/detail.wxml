@@ -1,0 +1,86 @@
+<!--pages/vote/detail/detail.wxml-->
+<view class="container" wx:if="{{isShowPage}}">
+    <view class="head" bindtap='toIntro'>
+        <image mode="widthFix" src="{{vote.bannerUrl}}"></image>
+    </view>
+    <view class="box">
+        <view class="join-box" style="padding-top:20rpx;">
+            <view class="intro" bindtap='toIntro' style='display:none'>活动介绍 》</view>
+            <block wx:if="{{status != '3'}}">
+                <view class="title">距离活动结束还有</view>
+                <view class="time"><text>{{countDownDay}}</text>天<text>{{countDownHour}}</text>时<text>{{countDownMin}}</text>分<text>{{countDownSec}}</text>秒</view>
+                <view class="count">已报名：<text>{{vote.joinUserNum}}</text>人</view>
+            </block>
+            <block wx:else>
+                <view class="title dis">本期活动已结束</view>
+                <view class="count dis">已报名：<text>{{vote.joinUserNum}}</text>人</view>
+            </block>
+            <view class="btn-box" style="display:{{isShowBtn?'block':'none'}}">
+                <view class="btn-group">
+                    <view class="btn l" wx:if="{{status=='3'}}" bindtap='toLotto'>查看中奖名单</view>
+                    <view class="btn r" wx:if="{{status=='2'&&!joinFlg}}" bindtap='toJoin'>我要报名</view>
+                    <view class="btn r" wx:if="{{joinFlg}}" bindtap='toDetail' data-id='{{vuid}}'>我的主页</view>
+                </view>
+            </view>
+        </view>
+      <view class="join-box dis">
+          <view class="search">
+            <view class="icon" bindtap="search"></view>
+            <input bindconfirm="search" name="search" bindinput="searchValue" placeholder-class="phcolor" 
+                placeholder='输入号码或名称' maxlength="32" value="{{searchValue}}"/>
+          </view>
+          <view class="list">
+                <view class="navbar">
+                    <block wx:for="{{navData}}">
+                        <view class="inner {{item.active?'on':''}}" data-index="{{index}}" bindtap="switchNavData">{{item.title}}</view>
+                    </block>
+                </view>
+                <view class="navbar1" wx:if="{{curNavIndex==1 && vote.genderType == '1'}}">
+                    <block wx:for="{{nav1Data}}">
+                        <view class="inner {{index==0?'l':'r'}} {{item.active?'on':''}}" data-index="{{index}}" 
+                            bindtap="switchNav1Data">{{item.title}}</view>
+                    </block>
+                </view>
+                <view class="data">
+                    <block wx:for="{{curNavIndex=='0'?listData:rankData}}">
+                        <view class="one">
+                            <view data-id='{{item.id}}' bindtap='toDetail'>
+                            <view class="one-img">
+                                <image src="{{item.cover}}"></image>
+                                <view class="uname-g" wx:if="{{vote.isSchoolVote == '1'}}">
+                                    <view class="uname-box">
+                                        <view class="bg1"></view><view class="bg2">{{item.schoolName}}</view>
+                                    </view>
+                                </view>
+                                <view class="rank {{item.isTop3?'top3':''}}" wx:if="{{curNavIndex=='1'}}" 
+                                  style="background-color:{{item.bgColor}}">
+                                    <view>
+                                        <view class="crown" wx:if="{{item.isTop3}}"></view>
+                                        <view><text wx:if="{{!item.isTop3}}">No.</text></view>
+                                        <text class="no">{{item.num}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="name">{{item.name}}</view>
+                            <view class="num">
+                                <text>{{item.id}}号</text>
+                                <text>{{item.id==curId?item.voteNum+1:item.voteNum}}票</text>
+                            </view>
+                            </view>
+                            <view class="btn {{item.voteFlg==0?'':'off'}}" data-obj="{{item}}"
+                                bindtap="{{item.voteFlg != 1?'vote':''}}">
+                                {{item.voteFlg==0?'给TA投票':item.voteFlg==1?'已投票':'给TA投票'}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="tips1">
+                    <view wx:if="{{!isNeedScrollLoad && isShowList}}" class="loadstatus">
+                        <text>没有更多内容了</text>
+                    </view>
+                </view>
+          </view>
+      </view>
+    </view>
+</view>
+

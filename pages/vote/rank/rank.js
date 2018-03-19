@@ -13,7 +13,7 @@ Page({
         { title: '最美运动女神', active: true, sign: 'beList' },
         { title: '最帅运动男神', active: false, sign: 'hanList' }
       ],
-      id: '2c939d8c61fa7e5d0161ff4936900001',
+      id: '', //活动id
       curNavIndex: 0,
       isLoadding: true, // 是否加载中
       scrollHeight: 0,
@@ -185,6 +185,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    var id = options.id
+    that.setData({
+      id: id ? id : '2c939d8c61fa7e5d0161ff4936900001'
+    })
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -231,11 +235,4 @@ Page({
   onPullDownRefresh: function () {
   
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

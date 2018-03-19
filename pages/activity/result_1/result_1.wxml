@@ -37,22 +37,6 @@
       </view>
     </view>
   </view>
-  <!-- <view class="head win">
-    <view class="win-title">恭喜你已中奖，跑步里程越多奖品越大</view>
-    <view class="result"><text>42</text>KM</view>
-    <view class="result-c"><text>当前最高里程:</text></view>
-    <image src="{{result.cover}}" class="win-img"></image>
-    <view class="btn-group">
-        <view class="btn l">立即兑奖</view>
-        <view class="btn r">点击分享你的喜悦</view>
-    </view>
-    <view class="detail" bindtap="toDetail">
-      查看活动详情
-      <view class="right-img">
-        <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180124151044VMmbnlfr.png"></image>
-      </view>
-    </view>
-  </view> -->
   <view class="title" wx:if="{{isShowList}}">
     <view></view>
     <text>恭喜以下完成任务并获奖人员</text>
