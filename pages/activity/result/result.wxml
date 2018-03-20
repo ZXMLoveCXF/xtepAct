@@ -37,13 +37,15 @@
       </view>
     </view>
   </view>
-  <view class="head win" style="{{ type == '1'}}">
+  <view class="head win" wx:if="{{ type == 1}}">
     <view class="win-title">恭喜你已中奖，跑步里程越多奖品越大</view>
-    <view class="result"><text>42</text>KM</view>
+    <view class="result"><text>{{kilometre}}</text>KM</view>
     <view class="result-c"><text>当前最高里程</text></view>
     <image src="{{result.cover}}" class="win-img"></image>
     <view class="btn-group">
-        <view class="btn l" data-statu="open" bindtap='powerDrawer1' style="background-color:{{receiveBtnColor}}">{{receiveBtnName}}</view>
+        <view class="btn l" data-statu="open" bindtap='powerDrawer1' 
+          style="background-color:{{receiveBtnColor}};pointer-events:{{isReceive}}">
+          {{receiveBtnName}}</view>
         <view class="btn r" data-statu="open" bindtap='powerDrawer'>点击分享你的喜悦</view>
     </view>
     <view class="detail" bindtap="toDetail">

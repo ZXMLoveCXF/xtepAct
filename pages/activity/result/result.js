@@ -20,7 +20,8 @@ Page({
     addressBtnStr: '点击填写收货信息',
     joinFlg: false,
     receiveBtnColor: '#4db0f4',
-    receiveBtnName: '立即兑奖'
+    receiveBtnName: '立即兑奖',
+    isReceive: false //是否兑奖
   },
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
@@ -127,8 +128,6 @@ Page({
     var type = that.data.type
     var token = app.getCache('token')
     var initData = app.getCache('initdata')
-    console.log(111111111111)
-    console.log(type)
     var url = type&&type=='1'?'active/ing/detail/':'active/end/detail/'
     //请求中奖详情
     app.reqServerData(
@@ -166,15 +165,13 @@ Page({
         var data = res.data.data
 
         //设置页面数据
-        if (data.winningFlg){
+        if (data.winningFlg || data.winningFlg == 1){
           resultObj = {
             id: data.gift.id,
             cover: data.gift.cover,
             title: data.gift.title,
             isWin: data.winningFlg,
-            hadAddrFlg: data.hadAddrFlg,
-            receiveBtnColor: data.receiveFlg&&data.receiveFlg=='1'?'#c1c1c1':'#4db0f4',
-            receiveBtnName: data.receiveFlg && data.receiveFlg == '1'?'已兑奖':'立即兑奖'
+            hadAddrFlg: data.hadAddrFlg
           }
         }else {
           resultObj = {
@@ -189,7 +186,11 @@ Page({
           codeImage: data.lotteryPicUrl,
           listWidth: data.list.length<5?(138*data.list.length):690,
           addressBtnStr: '点击'+(data.hadAddrFlg?'查看':'填写')+'收货地址',
-          joinFlg: data.joinFlg
+          joinFlg: data.joinFlg,
+          receiveBtnColor: data.receiveFlg && data.receiveFlg == 1 ? '#c1c1c1' : '#4db0f4',
+          receiveBtnName: data.receiveFlg && data.receiveFlg == 1 ? '已兑奖' : '立即兑奖',
+          isReceive: data.receiveFlg && data.receiveFlg == 1 ? 'none' : '',
+          kilometre: data.kilometre
         })
       }
     )
@@ -201,11 +202,12 @@ Page({
     app.showLoading()
     var that = this
     var id = options.id
-    var type = options.type
-
+    var type = options.type 
     that.setData({
       type: type?type:'2'
     })
+
+    console.log(that.data.type)
 
     //  这里要注意，微信的scroll-view必须要设置高度才能监听滚动事件，所以，需要在页面的onLoad事件中给scroll-view的高度赋值
     wx.getSystemInfo({
@@ -338,7 +340,8 @@ Page({
         }
         that.setData({
           receiveBtnColor: '#c1c1c1',
-          receiveBtnName: '已兑奖'
+          receiveBtnName: '已兑奖',
+          isReceive: 'none'
         })
         wx.showToast({
           title: "兑奖成功",

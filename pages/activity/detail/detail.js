@@ -237,7 +237,7 @@ Page({
           isLotto: (data.status == '4' || data.status == '5' || data.status == '6')?true:false //是否开奖 1.5版本
         })
 
-        if (res.data.data.multiPrizeFlg == '1' && (data.status != '1' || data.status != '6')){
+        if (res.data.data.multiPrizeFlg == '1' && data.status != '1' && data.status != '6'){
           that.setData({
             hideBtn: true
           })

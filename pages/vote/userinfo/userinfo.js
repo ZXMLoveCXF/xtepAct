@@ -23,6 +23,7 @@ Page({
     , isSchoolVote: 0//是否是学校投票
     , isSharePage: false //是否是分享页面进入
     , isAds: true //是否有广告
+    , isJoin: 0
   },
 
   toHome: function () {
@@ -315,8 +316,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // var isJoinActive = app.getCache('isJoinActive')
+    // if (isJoinActive == 1) {
+    //   that.setData({
+    //     isJoin: 1
+    //   })
+    // }
     var that = this
     that.util('close')
+    console.log('isjoin', that.data.isJoin)
+    
   },
 
   /**

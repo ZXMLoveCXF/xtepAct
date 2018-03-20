@@ -75,19 +75,41 @@ Page({
                 title: res.data.data,
                 duration: 2000,
               })
-              setTimeout(function(){
+              var pages = getCurrentPages();
+              var prevPage = pages[pages.length - 2];
+              if (prevPage && prevPage.data.isJoin == 0) {
+                prevPage.setData({
+                  isJoin: 1
+                })
+              }
+
+              setTimeout(function () {
                 wx.navigateBack({
                   delta: 1
                 })
-              },2000)
-              
+              }, 2000)
+              // app.setCache('isJoinActive', 1)
+
+
             },
             function (res) {
               app.showMsgModel('提示', '请求失败')
             },
             'POST'
           )
+          wx.showToast({
+            icon: "success",
+            title: res.data.data,
+            duration: 2000,
+          })
           
+
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 2000)
+
         } else if (res.cancel) {
           //console.log('用户点击取消')
           return
@@ -102,20 +124,20 @@ Page({
    */
   checkData: function (data) {
     var that = this
-    if (that.data.isSchoolVote == '1'){
+    if (that.data.isSchoolVote == '1') {
       if (that.validatemcontact(data.name) && that.validateage(data.age) && that.validatemobile(data.mobile)
         && that.validateschool(data.schoolName) && that.validatemark(data.mark) && that.validateimage()) {
         return true
       }
       return false
-    }else {
+    } else {
       if (that.validatemcontact(data.name) && that.validatemobile(data.mobile)
-       && that.validatemark(data.mark) && that.validateimage()) {
+        && that.validatemark(data.mark) && that.validateimage()) {
         return true
       }
       return false
     }
-    
+
   },
   /**
    * 验证联系人
@@ -206,14 +228,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
@@ -227,37 +249,37 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    uploadedImgs = [], 
-    uploadedIds = []
+    uploadedImgs = [],
+      uploadedIds = []
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 选择图片
    */
-  chooseImage: function(){
+  chooseImage: function () {
     var that = this
     var count = that.data.count
     var imgNum = that.data.imgNum
     wx.chooseImage({
-      count: count-imgNum, // 一次最多可以选择2张图片一起上传
+      count: count - imgNum, // 一次最多可以选择2张图片一起上传
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        if(that.data.imageList.length + res.tempFilePaths.length > 6){
+        if (that.data.imageList.length + res.tempFilePaths.length > 6) {
           app.showMsgModel('请求失败', '一次只能上传6张图片哦~')
           return
         }

@@ -64,3 +64,6 @@ button{background-color:#fff;margin:0;padding:0;}
   margin: 100rpx 20rpx 0 20rpx;
   border-radius: 16rpx;
 }
+.mb200{
+  margin-bottom: 200rpx;
+}
