@@ -13,12 +13,12 @@
 .head .detail{text-align:center;margin-top:20rpx;color:#989898;font-size:28rpx;display:flex;justify-content:center;}
 .head .detail .right-img{width:13rpx;height:18rpx;margin-left:10rpx;}
 .head .detail .right-img image{width:13rpx;height:18rpx;opacity:0.6;}
-.head .win-title{color:#f64849;text-align:center;margin-top:40rpx;}
-.head .result{text-align:center;}
-.head .result-c{text-align:center;}
-.head .result text{font-size:45rpx;font-weight:600;}
+.head .win-title{color:#f64849;text-align:center;margin-top:40rpx;font-weight:600;font-size:32rpx;}
+.head .result{text-align:center;margin-top:10rpx;font-size:28rpx;font-weight:600;}
+.head .result-c{text-align:center;font-weight:28rpx;margin-bottom:10rpx;}
+.head .result text{font-size:45rpx;}
 .head .win-img{height:180rpx;width:180rpx;margin-left:255rpx;margin-top:20rpx;} 
-.head .btn-group{display:flex;justify-content:center;margin-top:68rpx;}
+.head .btn-group{display:flex;justify-content:center;margin-top:78rpx;margin-bottom:30rpx;}
 .head .btn-group .btn{width:250rpx;font-size:30rpx;padding:20rpx;border-radius:100rpx;margin:-45rpx 10rpx 0 10rpx;}
 .head .btn-group .btn.l{background-color:#4db0f4;color:#fff;}
 .head .btn-group .btn.r{background-color:#fff;border:1px solid #4db0f4;color:#4db0f4;}
@@ -40,3 +40,15 @@ button{margin:0;padding:0;background-color:#fff;}
 .drawer_content{padding:20rpx 0;height:280rpx;overflow-y:hidden;}  
 .drawer_title{padding:20rpx;font:35rpx "microsoft yahei";text-align:center;}  
 .line{border-bottom:5px solid #f8f8f8;}  
+
+
+.drawer_attr_box1{width:650rpx;overflow:hidden;position:fixed;left:0;z-index:1001;background:#fff;margin:0 50rpx;border-radius:10rpx;} 
+.drawer_content1{padding-top:20rpx;overflow-y:hidden;}
+.drawer_content1 .tip{text-align:center;font-weight:600;margin-top:20rpx;}
+.drawer_content1 .msg{text-align:center; margin-top:20rpx;font-size:30rpx;color:#929292;}
+.drawer_content1 .btn-group{display:flex;justify-content:space-around;}
+.drawer_content1 .btn-group .one{font-size:35rpx;width:50%;text-align:center;padding:20rpx;}
+.drawer_content1 .btn-group .one.l{border-top:1px solid #f1f1f1;border-right:1px solid #f1f1f1;}
+.drawer_content1 .btn-group .one.r{border-top:1px solid #f1f1f1;border-left:1px solid #f1f1f1;color:#6ac341;}
+.drawer_content1 .sure{padding:0 50rpx;margin:20rpx 0;}
+.drawer_content1 .sure checkbox{color:#6ac341;zoom:60%;}

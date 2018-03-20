@@ -1,6 +1,6 @@
 <!--pages/activity/result/result.wxml-->
 <view class="container" style="display:{{isLoadding?'none':'block'}}">
-  <view class="head win" wx:if="{{joinFlg && result.isWin == true}}">
+  <view class="head win" wx:if="{{joinFlg && result.isWin == true && type == '2'}}">
     <image src="{{result.cover}}" class="pri-img"></image>
     <view class="pri-title win">恭喜您，中奖啦</view>
     <view class="pri-content">{{result.title}}</view>
@@ -13,7 +13,7 @@
       </view>
     </view>
   </view>
-  <view class="head" wx:if="{{joinFlg && result.isWin == false}}">
+  <view class="head" wx:if="{{joinFlg && result.isWin == false  && type == '2'}}">
     <image src="{{noWinImg}}" class="no-win-img"></image>
     <view class="pri-title">很遗憾，没有中奖</view>
     <view class="pri-content">一定是跑步姿势不对!</view>
@@ -25,7 +25,7 @@
       </view>
     </view>
   </view>
-  <view class="head" wx:if="{{!joinFlg}}">
+  <view class="head" wx:if="{{!joinFlg && type == '2'}}">
     <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180124200932qbFvAVP8.png" class="no-join-img"></image>
     <view class="pri-title">活动已结束</view>
     <view class="pri-content" wx:if="{{isShowList}}">你此次忘了报名该活动</view>
@@ -37,14 +37,14 @@
       </view>
     </view>
   </view>
-  <!-- <view class="head win">
+  <view class="head win" style="{{ type == '1'}}">
     <view class="win-title">恭喜你已中奖，跑步里程越多奖品越大</view>
     <view class="result"><text>42</text>KM</view>
-    <view class="result-c"><text>当前最高里程:</text></view>
+    <view class="result-c"><text>当前最高里程</text></view>
     <image src="{{result.cover}}" class="win-img"></image>
     <view class="btn-group">
-        <view class="btn l">立即兑奖</view>
-        <view class="btn r">点击分享你的喜悦</view>
+        <view class="btn l" data-statu="open" bindtap='powerDrawer1' style="background-color:{{receiveBtnColor}}">{{receiveBtnName}}</view>
+        <view class="btn r" data-statu="open" bindtap='powerDrawer'>点击分享你的喜悦</view>
     </view>
     <view class="detail" bindtap="toDetail">
       查看活动详情
@@ -52,7 +52,7 @@
         <image src="http://xtep321go-live.image.alimmdn.com/image/system/users/admin/20180124151044VMmbnlfr.png"></image>
       </view>
     </view>
-  </view> -->
+  </view>
   <view class="title" wx:if="{{isShowList}}">
     <view></view>
     <text>恭喜以下完成任务并获奖人员</text>
@@ -88,5 +88,23 @@
     <button class="drawer_title line" open-type="share">邀请微信好友</button>
     <button class="drawer_title line" bindtap="toShare">生成分享图片</button>
     <button class="drawer_title" data-statu="close" bindtap="powerDrawer">取消</button>
+  </view>
+</view>
+
+<!--mask-->
+<view class="drawer_screen" bindtap="powerDrawer1" data-statu="close" wx:if="{{showModalStatus1}}"></view>
+<view animation="{{animationData1}}" class="drawer_attr_box1" style="top:{{scrollHeight/2-50}}px;" wx:if="{{showModalStatus1}}">
+  <view class="drawer_content1">
+    <view class="tip">提示</view>
+    <view class="msg">请与现场工作人员兑奖，自行兑奖无效！</view>
+    <view class="sure">
+      <checkbox-group bindchange="checkboxChange">
+        <checkbox value="1">我知道了</checkbox>
+      </checkbox-group>
+    </view>
+    <view class="btn-group">
+      <view class="one l" bindtap="powerDrawer1" data-statu="close">取消</view>
+      <view class="one r" bindtap='receive'>确定</view>
+    </view>
   </view>
 </view>

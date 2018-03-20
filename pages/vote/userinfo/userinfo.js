@@ -11,24 +11,36 @@ Page({
   data: {
     id: '', //活动id
     isShowDetail: false //是否展示详情
+    , imgUrls: [
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ]//Swiper 图片
+    , indicatorDots: true //是否显示Swiper的导航点
+    , autoplay: true //是否自动播放Swiper
+    , interval: 3000 //Swiper的滚动频率
+    , duration: 1000 //Swiper的滚动速率
+    , isSchoolVote: 0//是否是学校投票
+    , isSharePage: false //是否是分享页面进入
+    , isAds: true //是否有广告
   },
 
-  toHome: function(){
+  toHome: function () {
     var that = this
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 4]
     var prevPage1 = pages[pages.length - 3]
-    if (prevPage){
+    if (prevPage) {
       wx.navigateBack({
         delta: 2
       })
-    }else if(prevPage1){
+    } else if (prevPage1) {
       wx.navigateBack({
         delta: 1
       })
-    }else {
+    } else {
       wx.reLaunch({
-        url: '/pages/vote/detail/detail?id='+that.data.id
+        url: '/pages/vote/detail/detail?id=' + that.data.id
       })
     }
   },
@@ -42,6 +54,15 @@ Page({
       url: '../../activity/introduce/introduce?url=' + that.data.markUrl,
     })
   },
+  /**
+  * 跳转报名页面
+  */
+  toJoin: function () {
+    var that = this
+    wx.navigateTo({
+      url: '../join/join?id=' + that.data.id + '&isSchoolVote=' + that.data.isSchoolVote
+    })
+  },
 
   /**
    * 获取单个用户投票详情
@@ -51,7 +72,7 @@ Page({
     var that = this
     var token = app.getCache('token')
     var initData = app.getCache('initdata')
-    
+
     //活动id
     var vid = that.data.id
     //用户id
@@ -82,27 +103,64 @@ Page({
         }
 
         var data = res.data.data
-        that.setData({
-          detail: data.obj,
-          endFlg: data.endFlg,
-          canVoteFlg: data.canVoteFlg,
-          markUrl: data.markUrl,
-          imgList: data.imgList,
-          sharePicUrl: data.sharePicUrl,
-          title: data.title,
-          cover: data.cover
-        })
+        if (data.bannerList.length == 0) {
+          that.setData({
+            detail: data.obj,
+            endFlg: data.endFlg,
+            canVoteFlg: data.canVoteFlg,
+            markUrl: data.markUrl,
+            imgList: data.imgList,
+            sharePicUrl: data.sharePicUrl,
+            title: data.title,
+            cover: data.cover
+            , isJoin: data.isJoin
+            , isSchoolVote: data.isSchoolVote
+            , imgUrls: data.bannerList
+            , isAds: false
+          })
+        }else{
+          that.setData({
+            detail: data.obj,
+            endFlg: data.endFlg,
+            canVoteFlg: data.canVoteFlg,
+            markUrl: data.markUrl,
+            imgList: data.imgList,
+            sharePicUrl: data.sharePicUrl,
+            title: data.title,
+            cover: data.cover
+            , isJoin: data.isJoin
+            , isSchoolVote: data.isSchoolVote
+            , imgUrls: data.bannerList
+            , isAds: true
+          })
+        }
+
         wx.stopPullDownRefresh()
         that.setData({
           isShowDetail: true
         })
         wx.setNavigationBarTitle({
-          title: data.obj.id+'号 '+data.obj.name
+          title: data.obj.id + '号 ' + data.obj.name
         })
 
         app.hideLoading()
       }
     )
+  },
+  ToAds: function (e) {
+    var that = this
+    var url = e.currentTarget.dataset.url
+    var imgType = e.currentTarget.dataset.type
+    if (imgType == 1) {
+      wx.navigateTo({
+        url: '../ads/ads?url=' + url,
+      })
+    } else if (imgType == 0) {
+      wx.navigateTo({
+        url: url,
+      })
+    }
+
   },
 
   /**
@@ -157,6 +215,19 @@ Page({
     var that = this
     var id = options.id
     var uid = options.uid
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];
+    if (!prevPage) {
+      console.log('--------------------sharePage-------------------')
+      that.setData({
+        isSharePage: true
+      })
+    } else {
+      console.log('---------------------otherPage-----------------')
+      that.setData({
+        isSharePage: false
+      })
+    }
     that.setData({
       id: id ? id : '2c939d8c61fa7e5d0161ff4936900001',
       uid: uid
@@ -165,6 +236,7 @@ Page({
       that.getDetail()
     })
   },
+
 
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
@@ -181,7 +253,7 @@ Page({
     wx.navigateTo({
       url: '../share/share?image=' + that.data.cover
       + '&codeImage=' + that.data.detail.erweimaUrl
-      + '&face=' + that.data.detail.face 
+      + '&face=' + that.data.detail.face
       + '&nickname=' + that.data.detail.name
       + '&title=' + that.data.title
       + '&type=' + 'vote'
@@ -236,7 +308,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -251,14 +323,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -273,7 +345,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
@@ -290,7 +362,7 @@ Page({
     return {
       title: wxuser.nickname + '邀你参与[321GO]' + '投票活动',
       imageUrl: that.data.sharePicUrl,
-      path: '/pages/vote/userinfo/userinfo?uid=' + that.data.uid + '&id='+that.data.id,
+      path: '/pages/vote/userinfo/userinfo?uid=' + that.data.uid + '&id=' + that.data.id,
       success: function (res) {
         // 分享成功
       },

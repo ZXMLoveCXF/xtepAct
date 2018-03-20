@@ -54,6 +54,7 @@ Page({
     isShowBtn: false,
     searchValue: '',
     isShowPage: false
+    , uid: 0
   },
 
   /**
@@ -204,7 +205,7 @@ Page({
     var dataset = e.currentTarget.dataset
     var uid = dataset.id
     wx.navigateTo({
-      url: '../userinfo/userinfo?uid=' + uid + '&id='+that.data.id,
+      url: '../userinfo/userinfo?uid=' + uid + '&id=' + that.data.id,
     })
   },
 
@@ -440,7 +441,9 @@ Page({
             bgColor: item.num > 3 ? '#fccf00' : '#ee0b12',
             isTop3: item.num < 4
           }
-          viewListData.push(viteItem)
+
+            viewListData.push(viteItem)
+
         }
 
         //是否拼接数据
@@ -603,7 +606,7 @@ Page({
     var that = this
     var id = options.id
     that.setData({
-      id: id ? id :'2c939d8c61fa7e5d0161ff4936900001'
+      id: id ? id : '2c939d8c61fa7e5d0161ff4936900001'
     })
     app.showLoading()
     app.checkLogin(function () {

@@ -20,7 +20,8 @@ Page({
     countDownTime: '00:00:00', //倒计时
     isCount: true, //是否倒计时
     ruleTitle: '获奖条件',
-    showQuesMark: false //是否显示获奖条件提示框
+    showQuesMark: false, //是否显示获奖条件提示框
+    hideBtn: false
   },
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
@@ -217,7 +218,7 @@ Page({
             runUrl: res.data.data.url,
             actInfo: data.mark,
             prizeList: prizeList,
-            type: data.activeType, //活动类型
+            type: res.data.data.multiPrizeFlg == '1' ? '3' : data.activeType, //活动类型
             resCount: data.diffUserNum, //还需要XX人参加，奖品数才增加
             prizeNum: data.lotteryPrizeNum, //奖品总数
             perUserNum: data.perUserNum, //每增加XX人，奖品数量增加
@@ -227,8 +228,20 @@ Page({
           },
           directJoinFlg:!assist||data.status=='4'||data.status=='5'||data.status=='6'?'2':assist.directJoinFlg,
           isCount: data.status=='4'||data.status=='5'||data.status=='6'?false:true,
-          ruleTitle: data.activeType == '1' ? '获奖条件':'活动说明'
+          ruleTitle: data.activeType == '1' ? '获奖条件':'活动说明',
+          multiPrizeFlg: res.data.data.multiPrizeFlg,//是否多礼品活动 0否 1是，如果值等于1 ，按照1.5的原型处理
+          title1: res.data.data.title1,
+          title2: res.data.data.title2,
+          kilometre: data.kilometre,
+          isComp: data.kilometrePercent >= 100 ? true : false, //是否完成里程 1.5版本
+          isLotto: (data.status == '4' || data.status == '5' || data.status == '6')?true:false //是否开奖 1.5版本
         })
+
+        if (res.data.data.multiPrizeFlg == '1' && (data.status != '1' || data.status != '6')){
+          that.setData({
+            hideBtn: true
+          })
+        }
 
         //活动倒计时
         if(data.diffTime){
@@ -285,7 +298,7 @@ Page({
         }
       }
     )
-  },
+  },  
   /**
    * 设置加载状态
    */
@@ -324,6 +337,22 @@ Page({
     }
   },
   /**
+   * 跳转中奖结果页面
+   */
+  toResult: function(e){
+    var that = this
+    var idx = e.currentTarget.dataset.idx;
+    var status = that.data.act.status
+    console.log(e.currentTarget.dataset.idx)
+    var str = ''
+    if (idx == 1){
+      str = "&type=1"
+    }
+    wx.redirectTo({
+      url: '../result/result?id=' + that.data.act.id + '&status=' + that.data.act.status + str
+    })
+  },
+  /**
    * 参与活动
    */
   toJoin: function (e) {
@@ -342,11 +371,6 @@ Page({
         url: '../join/join?id=' + that.data.act.id
       })
     } else if (joinFlg == '1'){
-      //直接报名参加
-      // app.showMsgModel('提示', '确认参与？', function () {
-      //   that.joinAct(e.detail.formId)
-      // },true)
-      // that.setClick(false)
       that.joinAct(e.detail.formId)
     } else if (joinFlg == '2') {
       //查看中奖结果
@@ -411,6 +435,13 @@ Page({
             btnColor: '#7f7f7f',
           },
         })
+
+        //1.5版本隐藏按钮
+        if (that.data.multiPrizeFlg == '1'){
+          that.setData({
+            hideBtn: true
+          })
+        }
 
         //修改首页的活动状态
         var curact = app.getCache("curact")

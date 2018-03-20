@@ -77,22 +77,24 @@
     <block wx:if="{{act.type == '3'}}">
       <view class="act-one">  
         <view>
-          <view class="act-title"><text>活动一：跑量换奖品</text></view>
-          <view class="act-result">当前最高跑步里程：<text class="num">12</text><text>KM</text></view>
+          <view class="act-title"><text>{{title1}}</text></view>
+          <view class="act-result">当前最高跑步里程：<text class="num">{{kilometre}}</text><text>KM</text></view>
           <view class="act-content">跑步里程数越多，奖品越大</view>
         </view>
         <view>
-          <view class="btn">去跑步</view>
+          <view class="btn" data-idx='1' bindtap="{{isComp?'toResult':'toIntroduce'}}">{{isComp?'去兑奖':'去跑步'}}</view>
         </view>
       </view>
       <view class="act-one">  
         <view>
-          <view class="act-title"><text>活动二：邀请赢跑鞋</text></view>
-          <view class="act-result">当前奖品数量：<text class="num">12</text><text>份</text></view>
-          <view class="act-content">还需要<text>10人</text>参加，奖品数量<text>+1</text></view>
+          <view class="act-title"><text>{{title2}}</text></view>
+          <view class="act-result">当前奖品数量：<text class="num">{{act.prizeNum}}</text><text>份</text></view>
+          <view class="act-content">还需要<text>{{act.resCount}}人</text>参加，奖品数量<text>+1</text></view>
         </view>
         <view>
-          <view class="btn">去跑步</view>
+          <view class="btn" data-statu="open" data-idx='2' bindtap="{{isLotto?'toResult':'powerDrawer'}}">
+            {{isLotto?'查看开奖情况':'我要邀请'}}
+          </view>
         </view>
       </view>
     </block>
@@ -114,7 +116,7 @@
     </block>
   </view>
   </view>
-   <form report-submit="true" bindsubmit="toJoin">
+   <form report-submit="true" bindsubmit="toJoin" style="display:{{hideBtn?'none':''}}">
       <view class="btn-join">
         <button class="btn" disabled="{{isClick}}" formType="submit" style="background-color:{{btn.btnBgColor}};color:{{btn.btnColor}}">
           {{btn.btnName}}       

@@ -16,7 +16,8 @@
     "pages/mine/actList/actList",
     "pages/vote/share/share",
     "pages/vote/list/list",
-    "pages/vote/detail/detail"
+    "pages/vote/detail/detail",
+    "pages/vote/ads/ads"
   ],
   "window": {
     "backgroundTextStyle": "light",
