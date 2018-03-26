@@ -7,7 +7,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+  data: {   
     isDisabled: false,
     showModalStatus: false,
     isLoadding: true,

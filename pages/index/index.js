@@ -519,52 +519,6 @@ Page({
   onShow: function () {
     // 页面显示
     var that = this
-    // var isFresh = app.getCache('isFresh')
-    // //如果需要刷新页面
-    // if (isFresh) {
-    //   app.showLoading()
-    //   app.delCache('isFresh')
-    //   var navData = that.data.navData
-    //   var curNavIndex = that.data.curNavIndex
-    //   navData[0].active = true
-    //   navData[1].active = false
-    //   that.setData({
-    //     navData: navData,
-    //     curNavIndex: 0
-    //   })
-    //   app.checkLogin(function () {
-    //     that.loadPageData(1)
-    //   })
-    // } else {
-    //   //不需要刷新页面，直接返回，获取缓存中的活动对象，判断是否需要更新活动状态
-    //   var curact = app.getCache('curact')
-    //   if (curact && curact.isChange) {
-    //     var curNavIndex = that.data.curNavIndex
-    //     var index = curact.index
-    //     var data = curact.data
-    //     var list = []
-    //     if (curNavIndex == 0) {
-    //       list = that.data.ingListData
-    //     } else {
-    //       list = that.data.endListData
-    //     }
-    //     list[index].status = data.status
-    //     list[index].statusStr = data.statusStr
-    //     list[index].bgColor = data.bgColor
-    //     list[index].userCount = data.userCount
-    //     curact.isChange = false
-    //     app.setCache('curact', curact)
-    //     if (curNavIndex == 0) {
-    //       that.setData({
-    //         ingListData: list
-    //       })
-    //     } else {
-    //       that.setData({
-    //         endListData: list
-    //       })
-    //     }
-    //   }
-    // }
     var curact = app.getCache('curact')
     if (curact && curact.isChange) {
       var curNavIndex = that.data.curNavIndex
@@ -578,21 +532,23 @@ Page({
       } else {
         list = that.data.endListData
       }
-      list[index].status = data.status
-      list[index].statusStr = data.statusStr
-      list[index].bgColor = data.bgColor
-      list[index].userCount = data.userCount
+      if(list && list.length > 0){
+        list[index].status = data.status
+        list[index].statusStr = data.statusStr
+        list[index].bgColor = data.bgColor
+        list[index].userCount = data.userCount
+        if (curNavIndex == 0) {
+          that.setData({
+            ingListData: list
+          })
+        } else {
+          that.setData({
+            endListData: list
+          })
+        }
+      }
       curact.isChange = false
       app.setCache('curact', curact)
-      if (curNavIndex == 0) {
-        that.setData({
-          ingListData: list
-        })
-      } else {
-        that.setData({
-          endListData: list
-        })
-      }
     }
   },
 
